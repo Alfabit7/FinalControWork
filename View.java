@@ -11,7 +11,7 @@ public class View {
 
         while (true) {
             System.out.println(
-                    "\n1- Завести новое животное \n2- Определить животное в класс \n3- Посмотреть список командб которое выполняет животное  \n4- Обучить животное новым командам \n5- Показать все игрушки \n6- Сохранить в файл\n7 -Выход из программы\n");
+                    "\n1- Завести новое животное \n2- Определить животное в класс \n3- Посмотреть список командб которое выполняет животное  \n4- Обучить животное новым командам \n5- Показать всех животных \n6- Сохранить в файл\n7 -Выход из программы\n");
 
             System.out.print("Выберите пункт меню: ");
             String userInput = sc.nextLine();
@@ -47,7 +47,7 @@ public class View {
     public static String SelectedClassAnimal() {
         Scanner sc = new Scanner(System.in);
         String userInput;
-        System.out.println("\n1- Home Animals \n2- Pack Animals");
+        System.out.println("\n1- Cats  \n2- Pack  \n3 -Dogs ");
         System.out.print("Выберите пункт меню: ");
         userInput = sc.nextLine();
         return userInput;
