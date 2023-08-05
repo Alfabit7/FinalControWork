@@ -12,7 +12,7 @@ public abstract class Animals {
         this.class_animals = class_animals;
     }
 
-    protected int add(int num) {
+    protected int add() {
         try {
             num += num;
         } catch (Exception e) {
