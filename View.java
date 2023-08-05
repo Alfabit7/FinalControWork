@@ -1,3 +1,4 @@
+import java.lang.reflect.Constructor;
 import java.util.Scanner;
 
 public class View {
@@ -21,6 +22,20 @@ public class View {
                     throw new Exception();
                 switch (userInt) {
                     case 1:
+                        System.out.print("\nВыберите класс животного, которое хотите добавить: ");
+                        byte start = 1;
+                        byte end = 2;
+                        int typeToys = ValidationInput(View.SelectedClassAnimal(), start, end);
+                        switch (typeToys) {
+                            case 1:
+                                // que.add(new Robot());
+                                // SelectMenu(View.ShowMenu());
+                                return 1;
+                            case 2:
+                                // que.add(new Constructor());
+                                // SelectMenu(View.ShowMenu());
+                                return 2;
+                        }
                         return 1;
                     case 2:
                         return 2;
@@ -42,4 +57,32 @@ public class View {
 
         }
     }
+
+    public static String SelectedClassAnimal() {
+        Scanner sc = new Scanner(System.in);
+        String userInput;
+        System.out.println("\n1- Home Animals \n2- Pack Animals");
+        System.out.print("Выберите пункт меню: ");
+        userInput = sc.nextLine();
+        return userInput;
+    }
+
+    // **Функиция принимает строку и диапазон [start :end] и проверяет, что введно
+    // число из этого диапазона */
+    public static int ValidationInput(String input, int start, int end) {
+        int userInt = -1;
+
+        try {
+            userInt = Integer.parseInt(input);
+            if (userInt != (int) userInt || userInt > start || userInt < end)
+                throw new Exception();
+        } catch (Exception e) {
+            System.out.println(
+                    "\nВводить можно только цифры из диапазона меню!" + " от " + start + " до " + end
+                            + "\nПовторите ввод!\n");
+
+        }
+        return userInt;
+    }
+
 }
