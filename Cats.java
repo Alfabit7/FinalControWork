@@ -7,7 +7,6 @@ public class Cats extends HomeAnimals {
     public Cats() {
         this.name = "Cat_id_" + (++id);
         this.dateBirthDay = LocalDate.now();
-        // { "Jump", "Sit", "Voice" };
         commands.add("фу");
         commands.add("сидеть");
         commands.add("Бежать");

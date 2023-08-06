@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Scanner;
 
 public class Controller {
     static ArrayList arrAnimals = new ArrayList<Animals>();
@@ -47,34 +48,70 @@ public class Controller {
             case 2:
                 System.out.println("Enter 2");
 
+                SelectMenu(View.ShowMenu());
+                return 2;
+            case 3:
+                System.out.println("Enter 3");
+
                 // Проверка что массив не пустой
                 if (arrAnimals.size() == 0) {
                     System.out.println(" с животными пуст добавьте животное");
                     SelectMenu(View.ShowMenu());
                 }
-                System.out.println("Выбирите животное, команды которого Вы хотите посмотреть: ");
 
+                System.out.println("Выбирите животное, команды которого Вы хотите посмотреть: ");
                 System.out.println();
+
                 byte countTypeAnimal = 6;
                 start = 1;
                 end = (byte) countTypeAnimal; // количество видов животных собак кошек ослов итд.
+
                 // проверка на валидность данных
-                int animalType = ValidationInput(View.SelectedClassAnimal(), start, end);
+                int numberAnimalType = ValidationInput(View.SelectedClassAnimal(), start, end);
+
                 // Если введено значение больше 0 и меньше countTypeAnimal то выводим команду
                 // животного
-                if (animalType >= 0 && animalType < arrAnimals.size()) {
-                    Animals selectedAnimal = (Animals) arrAnimals.get(animalType);
+                if (numberAnimalType > 0 && numberAnimalType < arrAnimals.size()) {
+                    Animals selectedAnimal = (Animals) arrAnimals.get(numberAnimalType);
                     selectedAnimal.getCommands();
-                } else if (animalType < 0 && animalType > arrAnimals.size()) {
+                } else if (numberAnimalType < 0 && numberAnimalType > arrAnimals.size()) {
                     System.out.println("Животное с таким номером не существует. Выбирите правильный номер из списка");
                 }
                 SelectMenu(View.ShowMenu());
-                return 2;
-            case 3:
-                System.out.println("Enter 3");
+
                 return 3;
             case 4:
                 System.out.println("Enter 4");
+                System.out.println("Обучить команде");
+                Object elAnimal = arrAnimals.get(0);
+                ((Animals) elAnimal).setCommands();
+                // countTypeAnimal = 6;
+                // start = 1;
+                // end = (byte) countTypeAnimal; // количество видов животных собак кошек ослов
+                // итд.
+                // проверка на валидность данных
+                // numberAnimalType = ValidationInput(userInput, start, end);
+
+                // Scanner sc = new Scanner(System.in);
+                // String userInput = sc.nextLine();
+                // System.out.println(arrAnimals.size());
+                // System.out.println(userInput);
+
+                // =====
+                // Если введено значение больше 0 и меньше countTypeAnimal то выводим команду
+                // животного
+                // if (numberAnimalType >= 0 && numberAnimalType < arrAnimals.size()) {
+                // Animals selectedAnimal = (Animals) arrAnimals.get(numberAnimalType);
+                // selectedAnimal.setCommands();
+                // } else if (numberAnimalType < 0 && numberAnimalType > arrAnimals.size()) {
+                // System.out.
+                // println("Животное с таким номером не существует. Выбирите правильный номер из
+                // списка"
+                // );
+                // }
+
+                SelectMenu(View.ShowMenu());
+
                 return 4;
             case 5:
                 System.out.println("Enter 5");
@@ -107,8 +144,9 @@ public class Controller {
                     "\nВводить можно только цифры из диапазона меню!" + " от " + start + " до " + end
                             + "\nПовторите ввод!\n");
             userInt = -1;
-
+            SelectMenu(View.ShowMenu());
         }
+
         return userInt;
     }
 

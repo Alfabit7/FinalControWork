@@ -1,27 +1,33 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.List;
 
-public abstract class PackAnimals extends Animals implements getCommands {
-    static int id = 0;
-    public String name;
+public abstract class PackAnimals extends Animals {
+    private String name;
     LocalDate dateBirthDay;
     String type_id = "PackAnimals";
-    LinkedList<String> commands = new LinkedList<String>();
+    private List<String> commands;
 
-    public PackAnimals() {
-        this.name = "Pack_Animals_" + (++id);
+    public PackAnimals(String animalClass) {
+        super(animalClass);
+        this.name = name;
         this.dateBirthDay = LocalDate.now();
+        this.commands = new ArrayList<>();
+        this.id_animals = id_animals;
+    }
+
+    // Посмотреть список комманд
+    public void getCommands() {
+        for (Object object : commands) {
+            System.out.println(object);
+        }
     }
 
     // Задать новую команду
-    public void setCommands(String str) {
-        commands.addLast(str);
-    }
-
-    public void getCommands() {
-        for (String com : commands) {
-            System.out.println(com);
-        }
+    public void setCommands(String command) {
+        System.out.println("Введите команду: ");
+        commands.add(command);
     }
 
     @Override
